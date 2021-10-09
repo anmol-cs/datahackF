@@ -43,12 +43,12 @@ with open("test.csv") as test_file:
         for i in tmp:
             if tmp[i] == j:
                 tmp2.append("user: var_"+str(tmp[i]+1))   
-                FinalCSV1.append(tmp[i])
     tmp2=set(tmp2)
     for i in tmp2:
         print(i)        
     for i in range(200):
         FinalCSV1.append("var_"+str(i))
+        FinalCSV1.append(tmp[i])
 
     # open the file in the write mode
     f = open('output.csv', 'w')
