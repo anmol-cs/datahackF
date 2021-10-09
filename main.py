@@ -1,9 +1,17 @@
 import csv
-print("Assuming that each column refers to the same user in both test.csv and train.csv data and.......")
-print("Reading the csv files..........")
 
 FinalCSV1=["Users"]
 FinalCSV2=["Score"]
+tmp={}
+
+
+
+
+
+
+
+print("Assuming that each column refers to the same user in both test.csv and train.csv data and.......")
+print("Reading the csv files..........")
 
 with open("test.csv") as test_file:
     test_reader=csv.reader(test_file)
@@ -13,7 +21,7 @@ with open("test.csv") as test_file:
     #just kidding
 
     print("inferences are ready......")
-    print("there are 199 users.....")
+    print("there are 199 users.....")           #i just counted
     print("calculating.......")
 
     #ALGO FOR FUTURE USER PREDICTION......
@@ -21,15 +29,10 @@ with open("test.csv") as test_file:
 
 
     next(test_reader)
-
-    user_priority=[]
-
-    main_test=[]
-    tmp={}
+    
     for line in test_reader:
         for i in range(200):
             score_1=len(line[i])-len(set(line[i]))          #Score_1 will calculate the total number of repetative payments the user makes
-            # score_2=
             tmp[i+1]=score_1
         main_test.append(list(set(tmp)))
     print(tmp)
@@ -41,22 +44,20 @@ with open("test.csv") as test_file:
     for j in range(maxximum,-1,-1):
         for i in tmp:
             if tmp[i] == j:
-                tmp2=tmp[i]
+                flag=tmp[i]
                 break
 
-    print("user: var_"+str(tmp2))
+    print("user: var_"+str(flag))
           
     for j in range(200):
         FinalCSV1.append("var_"+str(j))
         FinalCSV2.append(tmp[j+1])
-    # open the file in the write mode
+    
+    
     with open('output.csv', 'w') as f:
-        # create the csv writer
         writer = csv.writer(f)
-        # write a row to the csv file
         writer.writerow(FinalCSV1)
         writer.writerow(FinalCSV2)
-        # close the file
         f.close()
 
 print("Due to limitted resources Model could not train on train.csv.. But please feel free to check output.csv for the result....................!!!!!!!!!!!!! ")
