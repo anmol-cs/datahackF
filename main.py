@@ -38,32 +38,28 @@ with open("test.csv") as test_file:
     values=tmp.values()
     keys=tmp.keys()
     maxximum=max(values)
-    tmp2=[]
     for j in range(maxximum,-1,-1):
         for i in tmp:
             if tmp[i] == j:
-                tmp2.append("user: var_"+str(tmp[i]+1))   
-    tmp2=set(tmp2)
-    for i in tmp2:
-        print(i)        
-    for i in range(200):
-        FinalCSV1.append("var_"+str(i))
-        FinalCSV1.append(tmp[i])
+                tmp2=tmp[i]
+                break
 
+    print("user: var_"+str(tmp2))
+          
+    for j in range(200):
+        FinalCSV1.append("var_"+str(j))
+        FinalCSV2.append(tmp[j+1])
     # open the file in the write mode
-    f = open('output.csv', 'w')
+    with open('output.csv', 'w') as f:
+        # create the csv writer
+        writer = csv.writer(f)
+        # write a row to the csv file
+        writer.writerow(FinalCSV1)
+        writer.writerow(FinalCSV2)
+        # close the file
+        f.close()
 
-    # create the csv writer
-    writer = csv.writer(f)
-
-    # write a row to the csv file
-    writer.writerow(FinalCSV1)
-    writer.writerow(FinalCSV2)
-
-    # close the file
-    f.close()
-
-print("Due to limitted resources Model could not train ")
+print("Due to limitted resources Model could not train on train.csv.. But please feel free to check output.csv for the result....................!!!!!!!!!!!!! ")
 
 #sing DATA from train.csv
 with open("train.csv") as train_file:
