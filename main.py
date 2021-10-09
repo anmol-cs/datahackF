@@ -26,31 +26,31 @@ with open("test.csv") as test_file:
     for line in test_reader:
         for i in range(200):
             score_1=len(line[i])-len(set(line[i]))          #Score_1 will calculate the total number of repetative payments the user makes
-            score_2=
+            # score_2=
             tmp[i+1]=score_1
         main_test.append(list(set(tmp)))
-    # print(tmp)
+    print(tmp)
     # for i in tmp:
         
 
 
 
-    #using DATA from train.csv
-    with open("train.csv") as train_file:
-        train_reader=csv.reader(train_file)
+    # #using DATA from train.csv
+    # with open("train.csv") as train_file:
+    #     train_reader=csv.reader(train_file)
 
-        next(train_reader)
+    #     next(train_reader)
 
-        user_priority=[]
+    #     user_priority=[]
 
-        main_test=[]
-        tmp={}
-        for line in test_reader:
-            for i in range(200):
-                score_1=len(line[i])-len(set(line[i]))          #Score_1 will calculate the total number of repetative payments the user makes
-                tmp[i+1]=score_1
-            main_test.append(list(set(tmp)))
-        print(tmp)
+    #     main_test=[]
+    #     tmp={}
+    #     for line in test_reader:
+    #         for i in range(200):
+    #             score_1=len(line[i])-len(set(line[i]))          #Score_1 will calculate the total number of repetative payments the user makes
+    #             tmp[i+1]=score_1
+    #         main_test.append(list(set(tmp)))
+    #     print(tmp)
                 
 
 
